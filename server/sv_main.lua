@@ -18,22 +18,6 @@ local function GetPlayerLicense(source)
     return nil
 end
 
---データの保存更新
---MySQL.update.awaitは影響を受けた行数を返す
-local function SaveUserMoney(identifier, amount)
-    local affectedRows = MySQL.update.await([[
-        INSERT INTO `null-null_template_users` (identifier, money)
-        VALUES (?, ?)
-        ON DUPLICATE KEY UPDATE money = ?
-    ]], {
-        identifier, amount, amount
-    })
-
-    if affectedRows > 0 then
-        print(('[DATABASE] $s の所持金を %d に更新しました'):format(identifier, amount))
-    end
-end
-
 RegisterCommand('null_db_test', function (source, args)
     local xPlayer_identifier = "license:xxxxxxxx"
     local targetMoney = tonumber(args[1]) or 1000
