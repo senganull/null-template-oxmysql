@@ -8,6 +8,16 @@ local function GetUserData(identifier)
     return result
 end
 
+--licenseを取得
+local function GetPlayerLicense(source)
+    for _, identifier in ipairs(GetPlayerIdentifiers(source)) do
+        if string.sub(identifier, 1, 8) == "license:" then
+            return identifier
+        end
+    end
+    return nil
+end
+
 --データの保存更新
 --MySQL.update.awaitは影響を受けた行数を返す
 local function SaveUserMoney(identifier, amount)
