@@ -9,7 +9,7 @@ version '1.0.0'
 -- oxmysqlは@oxmysql/lib/MySQL.luaを読み込むことで、MySQLオブジェクトが使える
 server_scripts {
     '@oxmysql/lib/MySQL.lua',
-    'server_sv_main.lua'
+    'server/sv_main.lua'
 }
 
 files {
